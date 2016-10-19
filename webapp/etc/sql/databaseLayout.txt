@@ -1,0 +1,201 @@
+
+
+
+##### database: hoteldb
+##### user: hotel
+##### password: hotel12345
+
+
+Database Layout
+1.Clients/Customers Management
+2.Employees Management
+3.Meals and beverages Management
+4.Money Management
+4.Account Management
+
+
+
+###############
+#########  
+1.Clients/Customers Management
+
+1. table client
+    --id
+    --uuid
+    --name
+    --idnumber
+    --county
+    --phonenumber
+    --email
+
+
+2. table clientorder
+    --id
+    --uuid
+    --clientid REFERENCES client(uuid)
+    --ordernumber
+    --deliveryplace
+    --deliverytime
+    --deliverydate
+    -orderstatus
+
+
+
+
+3. table order
+    --id
+    --uuid
+    --clientorderId REFERENCES clientorder(uuid)
+    --item
+    --quantity
+    --price
+
+
+
+
+4. table room
+   --id
+   --uuid
+   --roomid
+   --roomclass
+   --status
+   --rentalfee
+
+
+
+5. table clientroom
+   --id
+   --uuid
+   --clientid REFERENCES client(uuid)
+   --roomid REFERENCES room(uuid)
+   --duration
+   --status
+   --description
+
+
+
+
+###############
+#########  
+2.Employees Management
+
+1. table salary
+    --id
+    --uuid
+    --category
+    --amount
+
+
+2. table employeesalary
+    --id
+    --uuid
+    --employeeId REFERENCES employee(uuid)
+    --day
+    --week
+    --month
+    --year
+    --datePaid
+    
+
+
+3. table employee
+	  --id
+	  --uuid
+	  --status
+	  --employeeNumber
+	  --idnumber
+	  --phonenumber
+	  --email
+	  --salaryid REFERENCES salary(uuid)
+	  --registrationDate
+
+
+
+
+4. table position
+    --id
+    --uuid
+    --position
+
+
+
+
+5. table employeeposition
+    --possitionId REFERENCES position(uuid)
+    --employeeId REFERENCES employee(uuid)
+
+
+6. table users
+    --id
+    --uuid
+    --employeeId REFERENCES employee(uuid)
+    --username
+    --password
+
+
+
+
+###############
+#########  
+3.Meals and beverages Management
+
+1. table category
+   --id
+   --uuid
+   --category
+   --description
+
+
+
+2. table meal
+    --id
+    --uuid
+    --categoryId REFERENCES category(uuid)
+    --description
+    --unitPrice
+
+
+
+###############
+#########  
+4.Money Management
+
+1. table sales
+    --id
+    --uuid
+    --transactionid
+    --mealsid REFERENCES meal(uuid)
+    --quantity
+    --day
+    --week
+    --month
+    --year
+    --date
+
+
+
+2. table expenses
+    --id
+    --uuid
+    --day
+    --week
+    --month
+    --year
+    --date
+    --amount
+    --description
+
+
+
+###############
+#########  
+4.Account Management
+
+1.account
+   --id
+   --uuid
+   --motelname
+   --mobile
+   --email
+   --address
+   --town

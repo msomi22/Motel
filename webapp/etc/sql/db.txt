@@ -1,0 +1,9 @@
+
+
+
+
+   CREATE USER hotel WITH PASSWORD 'hotel12345';
+   ALTER ROLE hotel WITH CREATEDB;
+   CREATE DATABASE hoteldb;
+   GRANT ALL PRIVILEGES ON DATABASE hoteldb to hotel;
+   ALTER DATABASE hoteldb OWNER to hotel;
